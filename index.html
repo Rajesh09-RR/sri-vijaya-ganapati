@@ -3,287 +3,428 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UPI Payment Interface</title>
+  <title>Sri Vijaya Ganapati Youth - Contribution</title>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      background-color: #f7f9fb;
+      background: #ecefe9;
       display: flex;
       justify-content: center;
-      padding: 16px;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 16px 12px;
     }
 
-    .container {
+    .app-card {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       background: #ffffff;
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #e0e0e0;
     }
 
-    /* Location Bar */
-    .location-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #f1f5f9;
-      border-radius: 8px;
-      padding: 8px 12px;
-      margin-bottom: 14px;
-      font-size: 13px;
-      color: #475569;
-      font-weight: 500;
-    }
-
-    /* UPI ID Card */
-    .upi-box {
-      border: 1.5px solid #ffe0b2;
-      background: #fffdfa;
-      border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .upi-details {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .payee-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .upi-id-text {
-      font-size: 13px;
-      color: #ea580c;
-      font-weight: 600;
-      word-break: break-all;
-    }
-
-    .btn-copy {
-      background-color: #ea580c;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    /* Tabs: Smart QR vs Direct App Link */
-    .section-title {
+    /* Top Red Header */
+    .header-banner {
+      background: #b23b2b;
+      color: #ffffff;
       text-align: center;
+      padding: 24px 16px 20px;
+    }
+
+    .tagline {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.95;
+      margin-bottom: 6px;
+    }
+
+    .main-heading {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .location-subtext {
+      font-size: 12px;
+      line-height: 1.4;
+      opacity: 0.9;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Contribution Box */
+    .content-area {
+      padding: 20px 18px 12px;
+      background: #fbf9f7;
+    }
+
+    .section-title {
+      color: #3b1915;
       font-size: 15px;
       font-weight: 700;
-      color: #374151;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .tab-switcher {
-      display: flex;
-      background: #f3f4f6;
-      border-radius: 10px;
-      padding: 4px;
-      gap: 4px;
-      margin-bottom: 16px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
+    .input-label {
+      display: block;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 6px;
       font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      background: transparent;
-      color: #4b5563;
     }
 
-    .tab-btn.active {
-      background: #ffffff;
-      color: #ea580c;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    /* Amount Section */
-    .amount-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .sub-heading {
-      color: #6b7280;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-
-    .chips-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .chip-btn {
-      border: 1px solid #fed7aa;
-      background: #fff;
-      border-radius: 8px;
-      padding: 8px 0;
-      font-weight: 700;
-      color: #ea580c;
-      cursor: pointer;
-    }
-
-    .chip-btn.selected {
-      background: #ea580c;
-      color: #ffffff;
-      border-color: #ea580c;
-    }
-
-    .custom-input {
+    .input-field {
       width: 100%;
-      padding: 12px;
-      border: 1.5px solid #fed7aa;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 700;
-      text-align: center;
+      padding: 11px 14px;
+      border: 1px solid #d4cdc5;
+      border-radius: 9px;
+      font-size: 14px;
+      background: #ffffff;
       outline: none;
       margin-bottom: 16px;
     }
 
-    .custom-input:focus {
-      border-color: #ea580c;
+    .input-field:focus {
+      border-color: #b23b2b;
     }
 
-    /* Pay to Connect Action Button */
-    .btn-pay-connect {
+    /* Amount Buttons Grid */
+    .amounts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .amt-btn {
+      background: #ffffff;
+      border: 1px solid #dfd7cf;
+      color: #333333;
+      padding: 11px 4px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .amt-btn:hover {
+      border-color: #b23b2b;
+    }
+
+    .amt-btn.active {
+      background: #b23b2b;
+      color: #ffffff;
+      border-color: #b23b2b;
+    }
+
+    .amt-btn.other-btn {
+      grid-column: span 3;
+    }
+
+    #customAmountWrapper {
+      display: none;
+      margin-bottom: 14px;
+    }
+
+    /* Green Pay Button */
+    .btn-pay-now {
       width: 100%;
-      background: #ea580c;
+      background: #238b55;
       color: #ffffff;
       border: none;
       border-radius: 10px;
       padding: 14px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+
+    .btn-pay-now:hover {
+      background: #1c7546;
+    }
+
+    /* Deity Image Container */
+    .image-container {
+      width: 100%;
+      padding: 0 16px;
+      background: #fbf9f7;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      padding: 8px 0 12px;
+      font-weight: 500;
+    }
+
+    /* Event Schedule Box */
+    .info-list {
+      padding: 14px 18px 18px;
+      background: #fbf9f7;
+      border-top: 1px dashed #dcd3cb;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+
+    .info-title {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .info-status {
+      color: #666;
+    }
+
+    /* Footer text */
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #777;
+      line-height: 1.5;
+      padding: 0 16px 20px;
+      background: #fbf9f7;
+    }
+
+    /* QR Code Modal for Laptop/Desktop */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      border: none;
+      background: #eee;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .qr-image {
+      width: 190px;
+      height: 190px;
+      margin: 14px auto;
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Location Details -->
-  <div class="location-bar">
-    <span>📍</span>
-    <span id="windowLocation">Gangavaram, Andhra Pradesh</span>
-  </div>
-
-  <!-- UPI ID & Payee Card -->
-  <div class="upi-box">
-    <div class="upi-details">
-      <span class="payee-name">Rajesh Kumar RAMAYANAPU</span>
-      <span class="upi-id-text" id="upiId">Ramayanapu.rajesh.kumar@ybl</span>
+<div class="app-card">
+  <!-- Top Banner -->
+  <div class="header-banner">
+    <div class="tagline">VINAYAKA CHAVITHI 2026</div>
+    <div class="main-heading">Sri Vijaya Ganapati Youth</div>
+    <div class="location-subtext">
+      Gangavaram Village, Dr. B.R. Ambedkar Konaseema District, Andhra Pradesh
     </div>
-    <button class="btn-copy" onclick="copyUPI()">Copy</button>
   </div>
 
-  <div class="section-title">Other Ways to Pay</div>
+  <!-- Form Area -->
+  <div class="content-area">
+    <div class="section-title">Offer Your Contribution</div>
 
-  <!-- Direct App Link / Smart QR Selector -->
-  <div class="tab-switcher">
-    <button class="tab-btn active" id="tabQR" onclick="switchMode('qr')">Smart Amount QR</button>
-    <button class="tab-btn" id="tabDirect" onclick="switchMode('direct')">Direct App Link</button>
-  </div>
-
-  <!-- Amount Selection Container -->
-  <div class="amount-card">
-    <div class="sub-heading">Select or enter amount to generate instant link</div>
-
-    <!-- Quick Preset Chips -->
-    <div class="chips-grid">
-      <button class="chip-btn" onclick="setAmount(51, this)">₹51</button>
-      <button class="chip-btn selected" onclick="setAmount(101, this)">₹101</button>
-      <button class="chip-btn" onclick="setAmount(251, this)">₹251</button>
-      <button class="chip-btn" onclick="setAmount(501, this)">₹501</button>
-    </div>
-
-    <!-- Custom Amount Field -->
+    <label class="input-label" for="donorName">Donor Name</label>
     <input 
-      type="number" 
-      id="amountInput" 
-      class="custom-input" 
-      value="101" 
-      placeholder="Enter Custom Amount"
+      type="text" 
+      id="donorName" 
+      class="input-field" 
+      placeholder="Enter your full name" 
     />
 
-    <!-- Pay to Connect Button -->
-    <button class="btn-pay-connect" id="payButton" onclick="triggerUPIPayment()">
-      Pay to Connect
+    <label class="input-label">Select Amount (₹)</label>
+    <div class="amounts-grid">
+      <button type="button" class="amt-btn" onclick="setPreset(101, this)">₹101</button>
+      <button type="button" class="amt-btn" onclick="setPreset(251, this)">₹251</button>
+      <button type="button" class="amt-btn active" onclick="setPreset(501, this)">₹501</button>
+      <button type="button" class="amt-btn" onclick="setPreset(1001, this)">₹1001</button>
+      <button type="button" class="amt-btn" onclick="setPreset(2101, this)">₹2101</button>
+      <button type="button" class="amt-btn" onclick="setPreset(5116, this)">₹5116</button>
+      <button type="button" class="amt-btn other-btn" onclick="showOtherInput(this)">Other</button>
+    </div>
+
+    <!-- Hidden custom amount box -->
+    <div id="customAmountWrapper">
+      <input 
+        type="number" 
+        id="customAmount" 
+        class="input-field" 
+        placeholder="Enter custom amount (₹)" 
+      />
+    </div>
+
+    <!-- Main Payment Trigger Button -->
+    <button type="button" class="btn-pay-now" onclick="processPayment()">
+      💳 Pay via UPI (GPay / PhonePe)
     </button>
+  </div>
+
+  <!-- Deity Photo -->
+  <div class="image-container">
+    <img 
+      src="https://images.unsplash.com/photo-1567591414240-e696238b975e?auto=format&fit=crop&w=800&q=80" 
+      alt="Sri Vijaya Ganapati Youth - Matti Vinayakudu" 
+    />
+    <div class="image-caption">Sri Vijaya Ganapati Youth • Matti Vinayakudu</div>
+  </div>
+
+  <!-- Event Dates Section -->
+  <div class="info-list">
+    <div class="info-row">
+      <span class="info-title">Laddu Auction</span>
+      <span class="info-status">[ Date: To be updated ]</span>
+    </div>
+    <div class="info-row">
+      <span class="info-title">Daily Prasadam</span>
+      <span class="info-status">[ Timings: To be updated ]</span>
+    </div>
+    <div class="info-row">
+      <span class="info-title">Nimajjanam</span>
+      <span class="info-status">[ Date: To be updated ]</span>
+    </div>
+  </div>
+
+  <!-- Footer Note -->
+  <div class="footer-note">
+    All contributions directly support pooja & community Annadanam.<br />
+    Organized by Sri Vijaya Ganapati Youth Committee
+  </div>
+</div>
+
+<!-- Modal for Scanning QR (Laptop / PC Users) -->
+<div class="modal-overlay" id="qrModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3 style="color:#b23b2b; font-size:17px; margin-bottom:6px;">Scan with Any UPI App</h3>
+    <p style="font-size:13px; color:#555;" id="modalDesc">Scan using GPay, PhonePe, or Paytm</p>
+    <img id="dynamicQR" class="qr-image" src="" alt="UPI QR Code" />
+    <div style="font-size:13px; font-weight:700; color:#333;" id="modalAmount"></div>
+    <p style="font-size:11px; color:#777; margin-top:8px;">UPI ID: Ramayanapu.rajesh.kumar@ybl</p>
   </div>
 </div>
 
 <script>
-  const upiId = "Ramayanapu.rajesh.kumar@ybl";
-  const payeeName = "Rajesh Kumar RAMAYANAPU";
-  const locationDetails = "Gangavaram, Andhra Pradesh";
+  const UPI_ID = "Ramayanapu.rajesh.kumar@ybl";
+  const PAYEE_NAME = "Rajesh Kumar RAMAYANAPU";
+  let activeAmount = 501;
+  let isCustom = false;
 
-  function copyUPI() {
-    navigator.clipboard.writeText(upiId).then(() => {
-      alert("UPI ID copied: " + upiId);
-    });
+  function setPreset(amt, elem) {
+    activeAmount = amt;
+    isCustom = false;
+    document.querySelectorAll(".amt-btn").forEach(b => b.classList.remove("active"));
+    elem.classList.add("active");
+    document.getElementById("customAmountWrapper").style.display = "none";
   }
 
-  function setAmount(val, element) {
-    document.getElementById("amountInput").value = val;
-    document.querySelectorAll(".chip-btn").forEach(btn => btn.classList.remove("selected"));
-    if (element) element.classList.add("selected");
+  function showOtherInput(elem) {
+    isCustom = true;
+    document.querySelectorAll(".amt-btn").forEach(b => b.classList.remove("active"));
+    elem.classList.add("active");
+    const wrapper = document.getElementById("customAmountWrapper");
+    wrapper.style.display = "block";
+    document.getElementById("customAmount").focus();
   }
 
-  function switchMode(mode) {
-    const tabQR = document.getElementById("tabQR");
-    const tabDirect = document.getElementById("tabDirect");
-    const payBtn = document.getElementById("payButton");
-
-    if (mode === 'direct') {
-      tabDirect.classList.add("active");
-      tabQR.classList.remove("active");
-      payBtn.innerText = "Direct Pay (Open App)";
-    } else {
-      tabQR.classList.add("active");
-      tabDirect.classList.remove("active");
-      payBtn.innerText = "Pay to Connect";
+  function getValidAmount() {
+    if (isCustom) {
+      return document.getElementById("customAmount").value.trim();
     }
+    return activeAmount;
   }
 
-  function triggerUPIPayment() {
-    const amount = document.getElementById("amountInput").value;
-    if (!amount || amount <= 0) {
-      alert("Please enter a valid amount.");
+  function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function processPayment() {
+    const donor = document.getElementById("donorName").value.trim();
+    const amount = getValidAmount();
+
+    if (!donor) {
+      alert("Please enter your name before making a payment.");
+      document.getElementById("donorName").focus();
       return;
     }
-    
-    // Generates standard UPI payment URL link
-    const upiUrl = upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(locationDetails)};
-    window.location.href = upiUrl;
+
+    if (!amount || Number(amount) <= 0) {
+      alert("Please select or enter a valid donation amount.");
+      return;
+    }
+
+    const note = Ganapati Donation - ${donor};
+    // Universal standard UPI payment URL
+    const upiUri = upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)};
+
+    if (isMobileDevice()) {
+      // Direct intent trigger on Mobile (PhonePe, GPay, Paytm)
+      window.location.href = upiUri;
+    } else {
+      // Instant QR popup for Laptop/Desktop
+      const qrApiUrl = https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)};
+      document.getElementById("dynamicQR").src = qrApiUrl;
+      document.getElementById("modalAmount").innerText = Amount: ₹${amount};
+      document.getElementById("modalDesc").innerText = Donor: ${donor};
+      document.getElementById("qrModal").style.display = "flex";
+    }
+  }
+
+  function closeModal() {
+    document.getElementById("qrModal").style.display = "none";
   }
 </script>
 
