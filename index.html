@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+[4:40 am, 10/09/2026] Chintu: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Vijaya Ganapati Youth - Contribution</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: #ecefe9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 16px 12px;
+    }
+
+    .app-card {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #e…
+[4:44 am, 10/09/2026] Chintu: <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -31,7 +62,7 @@
       border: 1px solid #e0e0e0;
     }
 
-    /* Top Red Header */
+    /* Red Header */
     .header-banner {
       background: #b23b2b;
       color: #ffffff;
@@ -63,9 +94,9 @@
       margin: 0 auto;
     }
 
-    /* Contribution Box */
+    /* Contribution Area */
     .content-area {
-      padding: 20px 18px 12px;
+      padding: 20px 18px 16px;
       background: #fbf9f7;
     }
 
@@ -99,7 +130,7 @@
       border-color: #b23b2b;
     }
 
-    /* Amount Buttons Grid */
+    /* Grid */
     .amounts-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -138,7 +169,7 @@
       margin-bottom: 14px;
     }
 
-    /* Green Pay Button */
+    /* Primary Pay Link / Button */
     .btn-pay-now {
       width: 100%;
       background: #238b55;
@@ -153,15 +184,68 @@
       justify-content: center;
       gap: 8px;
       cursor: pointer;
-      margin-top: 4px;
-      transition: background 0.2s;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(35, 139, 85, 0.3);
     }
 
     .btn-pay-now:hover {
       background: #1c7546;
     }
 
-    /* Deity Image Container */
+    /* Dedicated App Buttons for Mobile */
+    .app-shortcuts {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .shortcut-btn {
+      flex: 1;
+      text-align: center;
+      padding: 9px 4px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-phonepe { background: #5f259f; }
+    .btn-gpay { background: #1a73e8; }
+    .btn-paytm { background: #00b9f1; }
+
+    /* Laptop QR Scanner Area */
+    .qr-container {
+      margin-top: 18px;
+      padding: 14px;
+      background: #ffffff;
+      border: 1px dashed #d4cdc5;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .qr-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    .qr-code-img {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 8px;
+      display: block;
+    }
+
+    .upi-info {
+      font-size: 11px;
+      color: #777;
+      font-weight: 600;
+    }
+
+    /* Deity Image */
     .image-container {
       width: 100%;
       padding: 0 16px;
@@ -184,7 +268,7 @@
       font-weight: 500;
     }
 
-    /* Event Schedule Box */
+    /* Info Table */
     .info-list {
       padding: 14px 18px 18px;
       background: #fbf9f7;
@@ -207,7 +291,6 @@
       color: #666;
     }
 
-    /* Footer text */
     .footer-note {
       text-align: center;
       font-size: 11px;
@@ -215,50 +298,6 @@
       line-height: 1.5;
       padding: 0 16px 20px;
       background: #fbf9f7;
-    }
-
-    /* QR Code Modal for Laptop/Desktop */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: 999;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-    }
-
-    .modal-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 340px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      border: none;
-      background: #eee;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .qr-image {
-      width: 190px;
-      height: 190px;
-      margin: 14px auto;
-      display: block;
-      border: 1px solid #ddd;
-      border-radius: 8px;
     }
   </style>
 </head>
@@ -284,6 +323,7 @@
       id="donorName" 
       class="input-field" 
       placeholder="Enter your full name" 
+      oninput="updatePaymentLinks()"
     />
 
     <label class="input-label">Select Amount (₹)</label>
@@ -297,26 +337,40 @@
       <button type="button" class="amt-btn other-btn" onclick="showOtherInput(this)">Other</button>
     </div>
 
-    <!-- Hidden custom amount box -->
     <div id="customAmountWrapper">
       <input 
         type="number" 
         id="customAmount" 
         class="input-field" 
         placeholder="Enter custom amount (₹)" 
+        oninput="updatePaymentLinks()"
       />
     </div>
 
-    <!-- Main Payment Trigger Button -->
-    <button type="button" class="btn-pay-now" onclick="processPayment()">
+    <!-- Default Intent Trigger -->
+    <a id="mainPayBtn" class="btn-pay-now" href="#" onclick="checkDonor(event)">
       💳 Pay via UPI (GPay / PhonePe)
-    </button>
+    </a>
+
+    <!-- Direct App Shortcuts (Direct deep link protocols) -->
+    <div class="app-shortcuts">
+      <a id="phonepeBtn" class="shortcut-btn btn-phonepe" href="#" onclick="checkDonor(event)">PhonePe</a>
+      <a id="gpayBtn" class="shortcut-btn btn-gpay" href="#" onclick="checkDonor(event)">Google Pay</a>
+      <a id="paytmBtn" class="shortcut-btn btn-paytm" href="#" onclick="checkDonor(event)">Paytm</a>
+    </div>
+
+    <!-- Live Scannable QR (Works on laptops and desktops instantly) -->
+    <div class="qr-container">
+      <div class="qr-title">Or Scan QR from any UPI App</div>
+      <img id="upiQR" class="qr-code-img" src="" alt="UPI QR Code" />
+      <div class="upi-info">Ramayanapu.rajesh.kumar@ybl</div>
+    </div>
   </div>
 
   <!-- Deity Photo -->
   <div class="image-container">
     <img 
-      src="https://images.unsplash.com/photo-1567591414240-e696238b975e?auto=format&fit=crop&w=800&q=80" 
+      <img class="photo-banner" src="ganapati-main.jpg" alt="Sri Vijaya Ganapati Idol">
       alt="Sri Vijaya Ganapati Youth - Matti Vinayakudu" 
     />
     <div class="image-caption">Sri Vijaya Ganapati Youth • Matti Vinayakudu</div>
@@ -345,30 +399,19 @@
   </div>
 </div>
 
-<!-- Modal for Scanning QR (Laptop / PC Users) -->
-<div class="modal-overlay" id="qrModal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <h3 style="color:#b23b2b; font-size:17px; margin-bottom:6px;">Scan with Any UPI App</h3>
-    <p style="font-size:13px; color:#555;" id="modalDesc">Scan using GPay, PhonePe, or Paytm</p>
-    <img id="dynamicQR" class="qr-image" src="" alt="UPI QR Code" />
-    <div style="font-size:13px; font-weight:700; color:#333;" id="modalAmount"></div>
-    <p style="font-size:11px; color:#777; margin-top:8px;">UPI ID: Ramayanapu.rajesh.kumar@ybl</p>
-  </div>
-</div>
-
 <script>
   const UPI_ID = "Ramayanapu.rajesh.kumar@ybl";
   const PAYEE_NAME = "Rajesh Kumar RAMAYANAPU";
-  let activeAmount = 501;
+  let currentAmount = 501;
   let isCustom = false;
 
   function setPreset(amt, elem) {
-    activeAmount = amt;
+    currentAmount = amt;
     isCustom = false;
     document.querySelectorAll(".amt-btn").forEach(b => b.classList.remove("active"));
     elem.classList.add("active");
     document.getElementById("customAmountWrapper").style.display = "none";
+    updatePaymentLinks();
   }
 
   function showOtherInput(elem) {
@@ -378,54 +421,59 @@
     const wrapper = document.getElementById("customAmountWrapper");
     wrapper.style.display = "block";
     document.getElementById("customAmount").focus();
+    updatePaymentLinks();
   }
 
-  function getValidAmount() {
+  function getActiveAmount() {
     if (isCustom) {
-      return document.getElementById("customAmount").value.trim();
+      const val = document.getElementById("customAmount").value.trim();
+      return val && Number(val) > 0 ? val : 0;
     }
-    return activeAmount;
+    return currentAmount;
   }
 
-  function isMobileDevice() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  function updatePaymentLinks() {
+    const donor = document.getElementById("donorName").value.trim() || "Devotee";
+    const amount = getActiveAmount();
+    const note = Ganapati Donation - ${donor};
+
+    // Standard Universal URI
+    const upiQuery = pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)};
+    const standardUpi = upi://pay?${upiQuery};
+
+    // Set Anchor Hrefs directly (Bypasses popup/redirect security blocks)
+    document.getElementById("mainPayBtn").href = standardUpi;
+    document.getElementById("phonepeBtn").href = phonepe://pay?${upiQuery};
+    document.getElementById("gpayBtn").href = gpay://upi/pay?${upiQuery};
+    document.getElementById("paytmBtn").href = paytmmp://pay?${upiQuery};
+
+    // Dynamic QR update for laptop & screen scanners
+    const qrEndpoint = https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(standardUpi)};
+    document.getElementById("upiQR").src = qrEndpoint;
   }
 
-  function processPayment() {
+  function checkDonor(e) {
     const donor = document.getElementById("donorName").value.trim();
-    const amount = getValidAmount();
+    const amount = getActiveAmount();
 
     if (!donor) {
-      alert("Please enter your name before making a payment.");
+      alert("Please enter your name.");
+      e.preventDefault();
       document.getElementById("donorName").focus();
-      return;
+      return false;
     }
-
     if (!amount || Number(amount) <= 0) {
-      alert("Please select or enter a valid donation amount.");
-      return;
+      alert("Please select or enter a valid amount.");
+      e.preventDefault();
+      return false;
     }
-
-    const note = Ganapati Donation - ${donor};
-    // Universal standard UPI payment URL
-    const upiUri = upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)};
-
-    if (isMobileDevice()) {
-      // Direct intent trigger on Mobile (PhonePe, GPay, Paytm)
-      window.location.href = upiUri;
-    } else {
-      // Instant QR popup for Laptop/Desktop
-      const qrApiUrl = https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)};
-      document.getElementById("dynamicQR").src = qrApiUrl;
-      document.getElementById("modalAmount").innerText = Amount: ₹${amount};
-      document.getElementById("modalDesc").innerText = Donor: ${donor};
-      document.getElementById("qrModal").style.display = "flex";
-    }
+    return true;
   }
 
-  function closeModal() {
-    document.getElementById("qrModal").style.display = "none";
-  }
+  // Initialize on load
+  window.onload = function() {
+    updatePaymentLinks();
+  };
 </script>
 
 </body>
