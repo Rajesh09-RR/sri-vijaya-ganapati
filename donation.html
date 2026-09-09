@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Vijaya Ganapati Youth - Donation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #f6f7f9;
+      display: flex;
+      justify-content: center;
+      padding: 16px 12px;
+    }
+    .mobile-container {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border: 1px solid #eee;
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #ff7a00, #d44000);
+      color: #fff;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .header p {
+      font-size: 12px;
+      opacity: 0.95;
+      line-height: 1.4;
+    }
+    /* Content Padding */
+    .content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    /* Donation Card */
+    .card {
+      background: #fff8f2;
+      border: 1px solid #ffd4ba;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #8b2500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+    }
+    .form-group input:focus {
+      border-color: #d44000;
+      box-shadow: 0 0 0 3px rgba(212, 64, 0, 0.1);
+    }
+    .amount-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .chip {
+      background: #fff;
+      border: 1px solid #e07a38;
+      color: #d44000;
+      border-radius: 8px;
+      padding: 10px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .chip:hover {
+      background: #ffe8d4;
+    }
+    .chip.active {
+      background: #d44000;
+      color: #fff;
+    }
+    .custom-amount-section {
+      margin-top: 8px;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid #ffd4ba;
+      border-radius: 8px;
+      display: none;
+    }
+    .custom-amount-section.show {
+      display: block;
+    }
+    .custom-amount-wrapper {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .custom-amount-wrapper input {
+      flex: 1;
+      padding: 9px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .custom-amount-wrapper button {
+      background: #fff;
+      border: 1px solid #e07a38;
+      color: #d44000;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .custom-amount-wrapper button:hover {
+      background: #ffe8d4;
+    }
+    .custom-amount-wrapper button.active {
+      background: #d44000;
+      color: #fff;
+      border-color: #d44000;
+    }
+    .btn-donate {
+      width: 100%;
+      background: #1e8e3e;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      margin-top: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn-donate:hover {
+      background: #1a7a35;
+    }
+    .btn-donate:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    /* Vinayaka Photo Section */
+    .photo-card {
+      border: 1px solid #eee;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+    .photo-banner {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-info {
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+    /* Event Details */
+    .schedule-box {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 12px;
+      background: #ffffff;
+    }
+    .schedule-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      font-size: 13px;
+    }
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+    .schedule-label {
+      font-weight: 600;
+      color: #333;
+    }
+    .schedule-val {
+      color: #d44000;
+      font-weight: 600;
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      padding-bottom: 12px;
+      line-height: 1.5;
+    }
+    .error-msg {
+      color: #d44000;
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+    }
+    .error-msg.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-container">
+    <!-- Header -->
+    <div class="header">
+      <span class="badge">Vinayaka Chavithi 2026</span>
+      <h1>Sri Vijaya Ganapati Youth</h1>
+      <p>Gangavaram Village, Dr. B.R. Ambedkar Konaseema District, Andhra Pradesh</p>
+    </div>
+
+    <div class="content">
+      <!-- Donation Card -->
+      <div class="card">
+        <div class="card-title">Offer Your Contribution</div>
+        
+        <div class="form-group">
+          <label>Donor Name</label>
+          <input type="text" id="donorName" placeholder="Enter your full name" />
+        </div>
+
+        <div class="form-group">
+          <label>Select Amount (₹)</label>
+          <div class="amount-selector">
+            <button class="chip" onclick="setAmount(101)">₹101</button>
+            <button class="chip" onclick="setAmount(251)">₹251</button>
+            <button class="chip active" onclick="setAmount(501)">₹501</button>
+            <button class="chip" onclick="setAmount(1001)">₹1001</button>
+            <button class="chip" onclick="setAmount(2101)">₹2101</button>
+            <button class="chip" onclick="setAmount(5116)">₹5116</button>
+            <button class="chip" onclick="toggleCustomAmount()" id="otherBtn">Other</button>
+          </div>
+          
+          <!-- Custom Amount Input Section -->
+          <div class="custom-amount-section" id="customSection">
+            <label style="margin-bottom: 8px;">Enter Custom Amount</label>
+            <div class="custom-amount-wrapper">
+              <input type="number" id="customAmount" placeholder="Enter amount" min="1" />
+              <button id="confirmBtn" onclick="setCustomAmount()">Set</button>
+            </div>
+          </div>
+          
+          <input type="hidden" id="amountInput" value="501" />
+          <div id="errorMsg" class="error-msg">Please enter a valid amount</div>
+        </div>
+
+        <button class="btn-donate" onclick="payViaUPI()">
+          💳 Pay via UPI (GPay / PhonePe)
+        </button>
+      </div>
+
+      <!-- Black Soil Vinayaka Idol Image Card -->
+      <div class="photo-card">
+        <img class="photo-banner" src="https://images.unsplash.com/photo-1567591370504-8b6b06385d56?auto=format&fit=crop&w=800&q=80" alt="Sri Vijaya Ganapati Idol" />
+        <div class="photo-info">
+          Sri Vijaya Ganapati Youth • Matti Vinayakudu
+        </div>
+      </div>
+
+      <!-- Event Schedule Cards -->
+      <div class="schedule-box">
+        <div class="schedule-item">
+          <span class="schedule-label">Laddu Auction</span>
+          <span class="schedule-val">[ Date: To be updated ]</span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-label">Daily Prasadam</span>
+          <span class="schedule-val">[ Timings: To be updated ]</span>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-label">Maha Annadanam</span>
+          <span class="schedule-val">[ Date: To be updated ]</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        All contributions directly support pooja & community Annadanam.<br>
+        Organized by Sri Vijaya Ganapati Youth Committee.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setAmount(val) {
+      document.getElementById('amountInput').value = val;
+      document.getElementById('customAmount').value = '';
+      document.getElementById('customSection').classList.remove('show');
+      document.querySelectorAll('.chip').forEach(el => el.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('errorMsg').classList.remove('show');
+    }
+
+    function toggleCustomAmount() {
+      const customSection = document.getElementById('customSection');
+      customSection.classList.toggle('show');
+      if (customSection.classList.contains('show')) {
+        document.getElementById('customAmount').focus();
+        document.getElementById('otherBtn').classList.add('active');
+      } else {
+        document.getElementById('otherBtn').classList.remove('active');
+      }
+    }
+
+    function setCustomAmount() {
+      const customAmount = document.getElementById('customAmount').value;
+      
+      if (!customAmount || customAmount <= 0) {
+        document.getElementById('errorMsg').classList.add('show');
+        return;
+      }
+      
+      document.getElementById('amountInput').value = customAmount;
+      document.querySelectorAll('.chip').forEach(el => el.classList.remove('active'));
+      document.getElementById('otherBtn').classList.add('active');
+      document.getElementById('errorMsg').classList.remove('show');
+    }
+
+    function payViaUPI() {
+      const amount = document.getElementById('amountInput').value || '101';
+      const name = encodeURIComponent(document.getElementById('donorName').value || 'Devotee');
+      
+      // Validate amount
+      if (!amount || amount <= 0) {
+        document.getElementById('errorMsg').classList.add('show');
+        return;
+      }
+      
+      // UPI ID for donations
+      const upiId = "ramayanapu.rajesh.kumar@ybl";
+      const note = encodeURIComponent(`Ganapati Chanda - ${name}`);
+      
+      // Standard mobile UPI intent trigger
+      window.location.href = `upi://pay?pa=${upiId}&pn=SriVijayaGanapatiYouth&am=${amount}&cu=INR&tn=${note}`;
+    }
+
+    // Handle custom amount input on Enter key
+    document.getElementById('customAmount')?.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        setCustomAmount();
+      }
+    });
+  </script>
+</body>
+</html>
