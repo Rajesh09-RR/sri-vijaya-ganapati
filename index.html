@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sri Vijaya Ganapati Youth - Offerings & Chanda</title>
   
-  <!-- EasyQRCodeJS CDN for generating the secondary live QR -->
+  <!-- EasyQRCodeJS for Smart Dynamic QR -->
   <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.5.0/dist/easy.qrcode.min.js"></script>
 
   <style>
@@ -64,20 +64,98 @@
     }
     .hero-img {
       width: 100%;
-      height: 200px;
+      height: 210px;
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 16px;
       border: 1px solid #fed7aa;
     }
 
-    /* Tabs */
+    /* Primary Payment Container */
+    .primary-pay-box {
+      background: #fff7ed;
+      border: 2px solid #fdba74;
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.08);
+    }
+    .primary-pay-box h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #9a3412;
+      margin-bottom: 4px;
+    }
+    .primary-pay-box p.sub {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+    .main-qr {
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid #f97316;
+      background: #ffffff;
+      padding: 6px;
+      margin: 0 auto 14px;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Copy Boxes */
+    .copy-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 8px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .copy-label {
+      font-size: 11px;
+      color: #78716c;
+      font-weight: 600;
+    }
+    .copy-value {
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 13px;
+      color: #1f2937;
+    }
+    .mini-btn {
+      background: #ea580c;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    /* Accordion / Secondary Methods */
+    .more-options-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #4b5563;
+      margin: 16px 0 8px;
+      text-align: center;
+    }
     .tab-bar {
       display: flex;
       background: #f3f4f6;
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       gap: 4px;
     }
     .tab-btn {
@@ -90,7 +168,6 @@
       color: #4b5563;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s;
     }
     .tab-btn.active {
       background: #ffffff;
@@ -99,56 +176,17 @@
     }
     .tab-panel {
       display: none;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      text-align: center;
     }
     .tab-panel.active {
       display: block;
     }
 
-    /* QR Cards */
-    .qr-card {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .qr-card h3 {
-      font-size: 15px;
-      color: #9a3412;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .qr-card p {
-      font-size: 11px;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
-    .qr-image {
-      width: 200px;
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 2px solid #fdba74;
-      background: #fff;
-      padding: 6px;
-      margin: 0 auto 12px;
-      display: block;
-    }
-    .dynamic-qr-box {
-      width: 190px;
-      height: 190px;
-      margin: 0 auto 12px;
-      background: #fff;
-      padding: 8px;
-      border-radius: 12px;
-      border: 2px solid #fdba74;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Preset amount chips */
     .chip-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -165,7 +203,7 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    .chip:hover, .chip.active {
+    .chip.active {
       background: #ea580c;
       color: #fff;
     }
@@ -180,62 +218,34 @@
       margin-bottom: 12px;
       outline: none;
     }
-
-    .copy-pill {
+    .dynamic-qr-box {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 6px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: #ffffff;
-      border: 1px solid #fed7aa;
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-top: 8px;
-    }
-    .copy-label {
-      font-size: 11px;
-      color: #78716c;
-      font-weight: 500;
-    }
-    .copy-value {
-      font-family: monospace;
-      font-weight: 700;
-      font-size: 12px;
-      color: #1f2937;
-    }
-    .mini-btn {
-      background: #ea580c;
-      color: #fff;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
+      justify-content: center;
     }
 
-    /* Tab 2: Direct App Buttons */
-    .app-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
     .app-button {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      border-radius: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 13px;
       font-weight: 700;
       color: white;
+      margin-bottom: 8px;
     }
     .btn-phonepe { background: #5f259f; }
     .btn-gpay { background: #1a73e8; }
     .btn-paytm { background: #00b9f5; }
 
-    /* Schedule */
+    /* Schedule Section */
     .schedule-box {
       background: #fafaf9;
       border-radius: 14px;
@@ -247,7 +257,7 @@
     .schedule-row {
       display: flex;
       justify-content: space-between;
-      padding: 5px 0;
+      padding: 6px 0;
       border-bottom: 1px dashed #e7e5e4;
     }
     .schedule-row:last-child {
@@ -259,6 +269,7 @@
     }
     .schedule-row span:last-child {
       color: #78716c;
+      text-align: right;
     }
     .footer {
       text-align: center;
@@ -282,85 +293,64 @@
       <!-- Idol Photo -->
       <img src="ganapati-main.jpg" alt="Sri Vijaya Ganapati Idol" class="hero-img" />
 
-      <!-- Payment Method Navigation Tabs -->
+      <!-- BEST PRIMARY PAYMENT METHOD: Standalone QR & Reliable Copy -->
+      <div class="primary-pay-box">
+        <h2>Offer Your Contribution</h2>
+        <p class="sub">Scan with any UPI App (PhonePe, GPay, Paytm)</p>
+        
+        <!-- Uploaded QR Code Image -->
+        <img src="phonepe.jpeg" alt="Official PhonePe QR" class="main-qr" />
+
+        <!-- Working UPI Copy Row -->
+        <div class="copy-pill">
+          <span class="copy-label">UPI ID:</span>
+          <span class="copy-value" id="valUpi">938131414@ibl</span>
+          <button type="button" class="mini-btn" onclick="copyText('938131414@ibl', this)">Copy</button>
+        </div>
+
+        <p style="font-size: 11px; color: #9a3412; margin-top: 10px; font-weight: 500;">
+          Tip: Take a screenshot of this QR and scan it inside your UPI app.
+        </p>
+      </div>
+
+      <!-- Additional Payment Options -->
+      <div class="more-options-title">Other Ways to Pay</div>
       <div class="tab-bar">
-        <button class="tab-btn active" onclick="switchTab('qrTab', this)">PhonePe QR</button>
-        <button class="tab-btn" onclick="switchTab('customQrTab', this)">Smart QR</button>
-        <button class="tab-btn" onclick="switchTab('appsTab', this)">Direct Apps</button>
+        <button class="tab-btn active" onclick="switchTab('customQrTab', this)">Smart Amount QR</button>
+        <button class="tab-btn" onclick="switchTab('appsTab', this)">Direct App Link</button>
       </div>
 
-      <!-- METHOD 1: Uploaded PhonePe QR Image -->
-      <div id="qrTab" class="tab-panel active">
-        <div class="qr-card">
-          <h3>Method 1: PhonePe QR</h3>
-          <p>Scan with PhonePe, Google Pay, or Paytm</p>
-          <img src="phonepe.jpeg" alt="Official PhonePe QR" class="qr-image" />
-          
-          <div class="copy-pill">
-            <span class="copy-label">UPI ID:</span>
-            <span class="copy-value" id="valUpi1">938131414@ibl</span>
-            <button type="button" class="mini-btn" onclick="copyField('valUpi1', this)">Copy</button>
-          </div>
-          <p style="font-size: 10px; color: #9a3412; margin-top: 10px; margin-bottom: 0;">
-            Screenshot this card or open your camera to scan directly.
-          </p>
+      <!-- Option A: Smart Dynamic QR -->
+      <div id="customQrTab" class="tab-panel active">
+        <p style="font-size: 11px; color: #64748b; margin-bottom: 10px;">Select or enter amount to generate instant QR</p>
+        <div class="chip-grid">
+          <button type="button" class="chip" onclick="setPreset(51)">₹51</button>
+          <button type="button" class="chip active" onclick="setPreset(101)">₹101</button>
+          <button type="button" class="chip" onclick="setPreset(251)">₹251</button>
+          <button type="button" class="chip" onclick="setPreset(501)">₹501</button>
         </div>
+        <input type="number" id="amtInput" class="amount-input" value="101" placeholder="Enter amount" oninput="generateDynamicQR()" />
+        <div id="dynamicQrContainer" class="dynamic-qr-box"></div>
       </div>
 
-      <!-- METHOD 2: Additional Live Generated QR (Allows custom amounts) -->
-      <div id="customQrTab" class="tab-panel">
-        <div class="qr-card">
-          <h3>Method 2: Live Amount QR</h3>
-          <p>Select or enter amount to generate instant QR code</p>
-          
-          <div class="chip-grid">
-            <button type="button" class="chip" onclick="setPreset(51)">₹51</button>
-            <button type="button" class="chip active" onclick="setPreset(101)">₹101</button>
-            <button type="button" class="chip" onclick="setPreset(251)">₹251</button>
-            <button type="button" class="chip" onclick="setPreset(501)">₹501</button>
-          </div>
-
-          <input type="number" id="amtInput" class="amount-input" value="101" placeholder="Enter amount" oninput="generateDynamicQR()" />
-
-          <div id="dynamicQrContainer" class="dynamic-qr-box"></div>
-
-          <div class="copy-pill">
-            <span class="copy-label">UPI ID:</span>
-            <span class="copy-value" id="valUpi2">938131414@ibl</span>
-            <button type="button" class="mini-btn" onclick="copyField('valUpi2', this)">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- METHOD 3: Direct UPI App Intents -->
+      <!-- Option B: Direct App Triggers -->
       <div id="appsTab" class="tab-panel">
-        <div class="app-list">
-          <p style="font-size: 12px; color: #64748b; text-align: center; margin-bottom: 6px;">
-            Tap to open directly in your mobile app:
-          </p>
-          <a href="phonepe://pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-phonepe">
-            <span>Pay with PhonePe</span>
-            <span>➔</span>
-          </a>
-          <a href="gpay://upi/pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-gpay">
-            <span>Pay with Google Pay</span>
-            <span>➔</span>
-          </a>
-          <a href="paytmmp://pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-paytm">
-            <span>Pay with Paytm</span>
-            <span>➔</span>
-          </a>
-          <p style="font-size: 10px; color: #94a3b8; text-align: center; margin-top: 4px;">
-            (If an app shows a risk warning, switch back to the PhonePe QR tab)
-          </p>
-        </div>
+        <a href="phonepe://pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-phonepe">
+          <span>Open PhonePe</span><span>➔</span>
+        </a>
+        <a href="gpay://upi/pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-gpay">
+          <span>Open Google Pay</span><span>➔</span>
+        </a>
+        <a href="paytmmp://pay?pa=938131414@ibl&pn=Sri%20Vijaya%20Ganapati%20Youth&cu=INR" class="app-button btn-paytm">
+          <span>Open Paytm</span><span>➔</span>
+        </a>
       </div>
 
-      <!-- Schedule -->
+      <!-- Schedule with Morning & Evening Prasadam -->
       <div class="schedule-box">
         <div class="schedule-row">
           <span>Daily Prasadam</span>
-          <span>Daily Evening</span>
+          <span>Morning & Evening</span>
         </div>
         <div class="schedule-row">
           <span>Laddu Auction</span>
@@ -373,7 +363,7 @@
       </div>
 
       <div class="footer">
-        All contributions directly support Pooja & Annadanam.<br />
+        All contributions directly support Pooja & Community Annadanam.<br />
         Organized by <strong>Sri Vijaya Ganapati Youth Committee</strong>.
       </div>
     </div>
@@ -384,15 +374,44 @@
     const PAYEE_NAME = "Sri Vijaya Ganapati Youth";
     let qrInstance = null;
 
+    // Guaranteed copy function for all mobile browsers
+    function copyText(text, btn) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => showCopied(btn)).catch(() => fallbackCopy(text, btn));
+      } else {
+        fallbackCopy(text, btn);
+      }
+    }
+
+    function fallbackCopy(text, btn) {
+      const tempInput = document.createElement("input");
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand("copy");
+        showCopied(btn);
+      } catch (e) {
+        alert("Please copy manually: " + text);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    function showCopied(btn) {
+      const originalText = btn.innerText;
+      btn.innerText = "Copied!";
+      btn.style.background = "#16a34a";
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = "#ea580c";
+      }, 2000);
+    }
+
     function switchTab(tabId, el) {
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       el.classList.add('active');
-
-      if (tabId === 'customQrTab' && !qrInstance) {
-        generateDynamicQR();
-      }
     }
 
     function setPreset(amount) {
@@ -412,28 +431,14 @@
       
       qrInstance = new QRCode(container, {
         text: upiUrl,
-        width: 170,
-        height: 170,
+        width: 160,
+        height: 160,
         colorDark: "#1f2937",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M
       });
     }
 
-    function copyField(elementId, btn) {
-      const text = document.getElementById(elementId).innerText.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerText;
-        btn.innerText = "Copied!";
-        btn.style.background = "#16a34a";
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.background = "#ea580c";
-        }, 2000);
-      });
-    }
-
-    // Generate smart QR on load
     window.onload = function() {
       generateDynamicQR();
     };
