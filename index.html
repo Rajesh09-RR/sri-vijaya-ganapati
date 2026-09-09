@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,246 +30,360 @@
     }
 
     .header {
-      background: linear-gradient(135deg, #a82e1c, #851e0e);
-      color: #ffffff;
-      padding: 24px 20px;
+      background: linear-gradient…
+[5:02 am, 10/09/2026] Chintu: const upiId = "yourname@okhdfcbank"; // Put your real PhonePe/GPay UPI ID here
+[5:07 am, 10/09/2026] Chintu: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Vijaya Ganapati Youth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c2410c;
+      --primary-dark: #9a3412;
+      --gold: #f59e0b;
+      --gold-light: #fef3c7;
+      --bg-dark: #180d07;
+      --card-bg: rgba(36, 18, 11, 0.85);
+      --card-border: rgba(245, 158, 11, 0.25);
+      --text: #f9fafb;
+      --text-muted: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #2e1202 0%, #120703 100%), var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Header */
+    .header {
       text-align: center;
+      padding: 16px 8px;
     }
 
-    .header .subtitle {
-      font-size: 11px;
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #1a0800;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      opacity: 0.9;
-      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
     }
 
-    .header h1 {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 8px 0;
+    .title {
+      font-family: 'Rozha One', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fef3c7;
+      text-shadow: 0 2px 15px rgba(245, 158, 11, 0.4);
+      margin-bottom: 8px;
       line-height: 1.2;
     }
 
-    .header .location {
-      font-size: 12px;
-      opacity: 0.85;
-      line-height: 1.4;
+    .subtitle {
+      color: var(--text-muted);
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
     }
 
-    .body {
-      padding: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 6px;
-    }
-
-    input[type="text"],
-    input[type="number"] {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid #dcdfe4;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input:focus {
-      border-color: #a82e1c;
-    }
-
-    .amount-grid {
+    /* Grid Layout */
+    .main-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 10px;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
-    .amount-btn {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px 0;
-      font-size: 15px;
+    @media (min-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Card Component */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
       font-weight: 600;
-      color: #1e293b;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .amount-btn.active {
-      background: #a82e1c;
-      border-color: #a82e1c;
-      color: #ffffff;
-    }
-
-    #customAmountBox {
-      display: none;
-      margin-top: 8px;
-    }
-
-    .pay-btn {
-      width: 100%;
-      background: #16a34a;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
-      margin-top: 16px;
-      text-decoration: none;
-    }
-
-    .pay-btn:active {
-      transform: scale(0.98);
-    }
-
-    .qr-section {
-      margin-top: 24px;
-      border-top: 1px dashed #e2e8f0;
-      padding-top: 18px;
+      color: var(--gold);
+      margin-bottom: 16px;
+      border-bottom: 1px dashed rgba(245, 158, 11, 0.25);
+      padding-bottom: 8px;
       text-align: center;
     }
 
-    .qr-section p {
-      font-size: 13px;
-      color: #64748b;
-      margin-bottom: 12px;
+    /* Contribution Section */
+    .chip-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
     }
 
-    .qr-box {
-      width: 170px;
-      height: 170px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 8px;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .amount-btn {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--card-border);
+      color: #fef3c7;
+      font-weight: 600;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .qr-box img {
+    .amount-btn:hover, .amount-btn.active {
+      background: var(--gold);
+      color: #1f0b03;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .input-field {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: var(--gold);
+    }
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 8px;
+    }
+
+    .qr-container img {
+      width: 180px;
+      height: 180px;
+      border-radius: 8px;
+      background: white;
+      padding: 6px;
+    }
+
+    .upi-info {
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Image Card */
+    .idol-card {
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .idol-card img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .idol-caption {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    /* Events Section */
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .event-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .event-name {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .event-time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 20px 8px;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="header">
-      <div class="subtitle">Vinayaka Chavithi 2026</div>
-      <h1>Sri Vijaya Ganapati Youth</h1>
-      <div class="location">
-        Gangavaram Village, Dr. B.R. Ambedkar Konaseema District,<br>Andhra Pradesh
-      </div>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <span class="badge">Vinayaka Chavithi 2026</span>
+      <h1 class="title">Sri Vijaya Ganapati Youth</h1>
+      <p class="subtitle">
+        Gangavaram Village, Dr. B.R. Ambedkar Konaseema District, Andhra Pradesh
+      </p>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="main-grid">
+      <!-- Idol Showcase -->
+      <section class="card idol-card">
+        <img 
+          src="https://images.unsplash.com/photo-1567591370504-8b6348ef53cf?auto=format&fit=crop&w=800&q=80" 
+          alt="Sri Vijaya Ganapati Idol"
+        />
+        <div class="idol-caption">
+          Sri Vijaya Ganapati Youth • Matti Vinayakudu
+        </div>
+      </section>
+
+      <!-- Contribution / Donation Card -->
+      <section class="card">
+        <h2 class="card-title">Offer Your Contribution</h2>
+        
+        <div class="chip-group">
+          <button class="amount-btn" onclick="selectAmount(101)">₹101</button>
+          <button class="amount-btn" onclick="selectAmount(251)">₹251</button>
+          <button class="amount-btn" onclick="selectAmount(501)">₹501</button>
+          <button class="amount-btn" onclick="selectAmount(1001)">₹1,001</button>
+          <button class="amount-btn" onclick="selectAmount(2001)">₹2,001</button>
+          <button class="amount-btn" onclick="selectAmount(5001)">₹5,001</button>
+        </div>
+
+        <input 
+          type="number" 
+          id="customAmount" 
+          class="input-field" 
+          placeholder="Enter custom amount (₹)" 
+          oninput="generateQR(this.value)"
+        />
+
+        <div class="qr-container">
+          <img id="qrImage" src="" alt="Payment QR Code" />
+          <p class="upi-info">Scan using any UPI App (PhonePe, GPay, Paytm)</p>
+        </div>
+      </section>
     </div>
 
-    <div class="body">
-      <div class="form-group">
-        <label for="donorName">Donor Name</label>
-        <input type="text" id="donorName" placeholder="Enter your name" value="Rajesh" />
-      </div>
-
-      <div class="form-group">
-        <label>Select Amount (₹)</label>
-        <div class="amount-grid">
-          <button type="button" class="amount-btn" onclick="selectAmount(101, this)">₹101</button>
-          <button type="button" class="amount-btn" onclick="selectAmount(251, this)">₹251</button>
-          <button type="button" class="amount-btn active" onclick="selectAmount(501, this)">₹501</button>
-          <button type="button" class="amount-btn" onclick="selectAmount(1001, this)">₹1001</button>
-          <button type="button" class="amount-btn" onclick="selectAmount(2101, this)">₹2101</button>
-         const upiId = "yourname@okhdfcbank"; // Put your real PhonePe/GPay UPI ID here
+    <!-- Events & Timings -->
+    <section class="card">
+      <h2 class="card-title">Festival Program Schedule</h2>
+      <div class="events-grid">
+        <div class="event-item">
+          <span class="event-name">Daily Prasadam & Pooja</span>
+          <span class="event-time">Morning 8:00 AM & Evening 7:30 PM</span>
         </div>
-
-        <button type="button" class="amount-btn" style="width: 100%;" onclick="toggleCustom(this)">Other Amount</button>
-        <div id="customAmountBox">
-          <input type="number" id="customAmount" placeholder="Enter amount in ₹" oninput="updateCustomAmount(this.value)" />
+        <div class="event-item">
+          <span class="event-name">Special Laddu Auction</span>
+          <span class="event-time">Date: To be updated</span>
+        </div>
+        <div class="event-item">
+          <span class="event-name">Grand Nimajjanam Utsavam</span>
+          <span class="event-time">Date: To be updated</span>
         </div>
       </div>
+    </section>
 
-      <a id="payLink" href="#" class="pay-btn">
-        Pay via Any UPI App (₹<span id="btnAmount">501</span>)
-      </a>
-
-      <div class="qr-section">
-        <p>Or scan using Google Pay, PhonePe, or Paytm</p>
-        <div class="qr-box">
-          <img id="qrImage" src="" alt="UPI QR Code" />
-        </div>
-      </div>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      All contributions directly support pooja & community Annadanam.<br>
+      Organized with devotion by <strong>Sri Vijaya Ganapati Youth Committee</strong>.
+    </footer>
   </div>
 
   <script>
-    // Replace with your real UPI ID and Payee Name
-    const upiId = "yourupiid@okhdfcbank";
-    const payeeName = "Sri Vijaya Ganapati Youth";
-    let currentAmount = 501;
+    // Replace with the actual UPI ID of your committee or trust
+    const UPI_ID = "ganapatiyouth@upi";
+    const PAYEE_NAME = "Sri Vijaya Ganapati Youth";
 
-    function refreshUPI() {
-      const note = encodeURIComponent("Ganapati Chanda 2026");
-      const name = encodeURIComponent(payeeName);
-      
-      // Dynamic UPI deep-link
-      const upiUrl = upi://pay?pa=${upiId}&pn=${name}&am=${currentAmount}&cu=INR&tn=${note};
-      
-      document.getElementById("payLink").href = upiUrl;
-      document.getElementById("btnAmount").textContent = currentAmount;
-
-      // Auto-generates real QR code via public QR API
-      const qrApiUrl = https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)};
-      document.getElementById("qrImage").src = qrApiUrl;
-    }
-
-    function selectAmount(val, btn) {
-      currentAmount = val;
-      document.querySelectorAll(".amount-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      document.getElementById("customAmountBox").style.display = "none";
-      refreshUPI();
-    }
-
-    function toggleCustom(btn) {
-      document.querySelectorAll(".amount-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const box = document.getElementById("customAmountBox");
-      box.style.display = "block";
+    function selectAmount(val) {
       const input = document.getElementById("customAmount");
-      input.focus();
-      if (input.value) {
-        currentAmount = Number(input.value) || 0;
-        refreshUPI();
-      }
+      input.value = val;
+      generateQR(val);
+
+      // Highlight active button
+      document.querySelectorAll(".amount-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.textContent.replace(/[^\d]/g, "") == val);
+      });
     }
 
-    function updateCustomAmount(val) {
-      currentAmount = Number(val) || 0;
-      refreshUPI();
+    function generateQR(amount) {
+      const qrImg = document.getElementById("qrImage");
+      const cleanAmount = parseFloat(amount) || 101;
+      
+      const upiUrl = upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${cleanAmount}&cu=INR;
+      const qrApi = https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)};
+      
+      qrImg.src = qrApi;
     }
 
-    // Initialize on page load
-    refreshUPI();
+    // Initialize with default amount
+    selectAmount(501);
   </script>
 </body>
 </html>
